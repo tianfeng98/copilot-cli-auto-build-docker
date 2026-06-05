@@ -1,6 +1,9 @@
 FROM debian:bookworm-slim
 ARG COPILOT_VERSION
 ARG TARGETARCH
+RUN echo "=== Build Stage Variables ===" \
+    && echo "COPILOT_VERSION: $COPILOT_VERSION" \
+    && echo "TARGETARCH: $TARGETARCH"
 RUN apt-get update \
     && apt-get install -y --no-install-recommends ca-certificates wget \
     && wget -q "https://github.com/github/copilot-cli/releases/download/v${COPILOT_VERSION}/copilot-linux-${TARGETARCH}.tar.gz" \
